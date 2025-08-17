@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? '/api' 
-  : 'https://employee-management-bj7q.onrender.com/api';
+const API_BASE_URL = 'https://employee-management-bj7q.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
