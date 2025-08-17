@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
   ? '/api' 
-  : 'http://localhost:5000/api';
+  : 'https://employee-management-bj7q.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
