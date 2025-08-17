@@ -25,7 +25,10 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://employeemanagementtool.netlify.app', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Database connection
