@@ -5,8 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "cd server && npm start",
     "server": "cd server && npm start",
     "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
     "install-server": "cd server && npm install",
     "install-client": "cd client && npm install",
     "install-all": "npm run install-server && npm run install-client"
@@ -20,7 +22,7 @@
     "react",
     "mongodb"
   ],
-  "author": "Dhana Balan",
+  "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^7.6.0"
