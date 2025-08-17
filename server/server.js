@@ -31,10 +31,8 @@ app.use(express.json());
 // Database connection
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    await mongoose.connect(process.env.MONGODB);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
     process.exit(1);
   }
 };
@@ -51,22 +49,15 @@ app.use('/api/setup', setupRoutes);
 app.use('/api/automation', automationRoutes);
 app.use('/api/notifications', notificationRoutes);
 
-// Serve static files from React build
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  
-  // Handle React routing, return all requests to React app
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  });
-}
+// Test route
+app.get('/', (req, res) => {
+  res.json({ message: 'Server is running' });
+});
 
 const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  app.listen(PORT);
 });
 
 export { connectDB };
